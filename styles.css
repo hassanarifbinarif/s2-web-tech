@@ -1,0 +1,16 @@
+.product
+{
+    padding: 15px;
+    margin: 5px;
+    border: 3px double tomato;
+    border-radius: 1px;
+}
+
+.product:hover {
+    background-color:ghostwhite;
+    border: 3px double black;
+}
+
+p {
+    font-size:1.1rem;
+}
