@@ -4,6 +4,7 @@ $(function () {
     $("#recipes").on("click", ".btn-danger", DelProd);
     $("#btn").click(AddProd);
     $("#recipes").on("click", ".btn-warning", EditProd);
+    $("#recipes").on("click", ".btn-success", GetAll);
 
     $("#saveBtn").click(function () {
         var name = $("#NameId").val();
@@ -91,13 +92,8 @@ function getSingleProd(){
                <h3>Department:</h3><p>${oneProd[0].department}</p>
                <h3>Description:</h3><p>
                 ${oneProd[0].description}</p>
-
-                <h4>All products will be shown again in 3 seconds</h4>
+                <button class="btn btn-success btn-block">Get All Products</button>
               </div>`);
-
-            setTimeout(function(){
-                GetAll();
-            },3000)
 
         })
 }
