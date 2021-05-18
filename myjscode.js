@@ -3,7 +3,6 @@ $(function () {
     $("#recipes").on("click", ".btn-danger", DelProd);
     $("#btn").click(AddProd);
     $("#recipes").on("click", ".btn-warning", EditProd);
-    $("#btnGetSingle").click(getOneProd);
 
     $("#saveBtn").click(function () {
         var name = $("#NameId").val();
@@ -69,17 +68,6 @@ function GetAll() {
             }
         },
     });
-}
-
-function getOneProd(){
-    fetch('https://usman-recipes.herokuapp.com/api/products')
-        .then( (apidata) =>{
-          return apidata.json();
-
-        }).then((orignaldata)=>{
-
-            console.log(orignaldata[0])
-        })
 }
 
 function AddProd() {
