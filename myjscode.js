@@ -1,5 +1,6 @@
 $(function () {
     GetAll();
+    $("#btnGetSingle").click(getSingleProd);
     $("#recipes").on("click", ".btn-danger", DelProd);
     $("#btn").click(AddProd);
     $("#recipes").on("click", ".btn-warning", EditProd);
@@ -68,6 +69,37 @@ function GetAll() {
             }
         },
     });
+}
+
+function getSingleProd(){
+    fetch('https://usman-recipes.herokuapp.com/api/products')
+        .then( (apidata) =>{
+          return apidata.json();
+
+        }).then((oneProd)=>{
+
+            console.log(oneProd[0])
+            var req = $("#recipes");
+            req.empty();
+            req.append(`
+              <div class="product" data-id="${oneProd[0]._id}">
+               <button class="btn btn-danger float-right">Delete</button> 
+               <button class="btn btn-warning float-right">Update</button>
+               <h3>Name:</h3><p>${oneProd[0].name}</p>
+               <h3>Price:</h3><p>${oneProd[0].price}<p>
+               <h3>Color:</h3><p>${oneProd[0].color}<p>
+               <h3>Department:</h3><p>${oneProd[0].department}</p>
+               <h3>Description:</h3><p>
+                ${oneProd[0].description}</p>
+
+                <h4>All products will be shown again in 3 seconds</h4>
+              </div>`);
+
+            setTimeout(function(){
+                GetAll();
+            },3000)
+
+        })
 }
 
 function AddProd() {
